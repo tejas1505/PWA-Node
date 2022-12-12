@@ -1,0 +1,26 @@
+{
+    "name": "Node PWA app",
+    "short_name": "Node-pwa-app",
+    "description":"Node app build with PWA for testing on mobile",
+    "start_url": "/",
+    "scope":"/",
+    "id":"/",
+    "display": "fullscreen",
+    "background_color": "#fdfdfd",
+    "theme_color": "#db4938",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/dbi.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/db.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        }
+    ]
+}
