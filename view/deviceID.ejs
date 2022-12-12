@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>Device Information</title>
+</head>
+<body>
+    <div class="contanier" id="container" style="margin: 10px;">
+        <h1>Device Information with QRCode</h1>
+        <div class="qrcode" id="qrcode"></div>
+        <div class="dev_info">
+            <% sampleData1.forEach(function(data1){ %><br>
+                <h4>Product ID : <%= data1.product_id %></h4>
+                    <h4>Product Name : <%= data1.product_name %></h4>
+                    <h4>Product Description : <%= data1.product_description %></h4>
+                    <h4>Mode of Payment : <%= data1.mode_of_payment %></h4>
+                    <h4>Price : Rs. <%= data1.price %>/- </h4>
+                    <h4>Warranty : <%= data1.warranty %></h4>
+                    <h4>Manufacturing Label : <%= data1.manufacturing_label %></h4>
+                    <h4>SGST : <%= data1.SGST_percentage %>%</h4>
+                    <h4>CGST : <%= data1.CGST_percentage %>%</h4>
+                    <h4>Brand : <%= data1.brand %></h4>
+                <% }); %>
+        </div>
+    </div>
+</body>
+<script>
+    var url = window.location.href;
+    var container = document.getElementById("container");
+    var title = document.getElementById("title");
+    // console.log(url)
+    new QRCode(document.getElementById("qrcode"), window.location.href);
+    html2pdf().from(container).save("Device_Information")
+</script>
+</html>

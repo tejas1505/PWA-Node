@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#db4938" />
+    <link rel="apple-touch-icon" href="favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>Devices</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        Data From Database
+        <table border="2">
+            <tr id="0">
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Quantity</th>
+                <th>QR Code</th>
+                <th>Download</th>
+            </tr>
+            <% sampleData.forEach(function(data){ %>
+                <tr id="<%= data.product_id %>">
+                    <td>
+                        <%= data.product_id %>
+                    </td>
+                    <td>
+                        <%= data.product_name %>
+                    </td>
+                    <td>
+                        <%= data.product_description %>
+                    </td>
+                    <td>
+                        <%= data.quantity %>
+                    </td>
+                    <td><button class="btn" onclick="generateQRCode(this)" id="<%= data.product_id %>">QRCode</button>
+                    </td>
+                    <td><a id="<%= data.product_id %>" onclick="sethref(this)" style="cursor:pointer ;">Download</a>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+        <div id="display1" style="margin: 10px;height: auto;width: 50%;">
+            <div id="display" style="margin: 10px;height: auto;width: auto;"></div>
+            <% sampleData.forEach(function(data){ %>
+                <div class="dev_info" id="dev_info<%= data.product_id %>" style="display:none ;">
+                    <h4>Product ID : <%= data.product_id %>
+                    </h4>
+                    <h4>Product Name : <%= data.product_name %>
+                    </h4>
+                    <h4>Product Description : <%= data.product_description %>
+                    </h4>
+                    <h4>Mode of Payment : <%= data.mode_of_payment %>
+                    </h4>
+                    <h4>Price : Rs. <%= data.price %>/- </h4>
+                    <h4>Warranty : <%= data.warranty %>
+                    </h4>
+                    <h4>Manufacturing Label : <%= data.manufacturing_label %>
+                    </h4>
+                    <h4>SGST : <%= data.SGST_percentage %>%</h4>
+                    <h4>CGST : <%= data.CGST_percentage %>%</h4>
+                    <h4>Brand : <%= data.brand %>
+                    </h4>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+    <a href="/"><button>Back</button></a>
+    <button id="button1">Download</button>
+</body>
+<script src="/javascripts/sam_data.js"></script>
+
+</html>
